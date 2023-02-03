@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+
+    <title>TU Chemnitz Seminar: NMF</title>
+    <meta name="description" content="Seminar on NMF for Dr Max Pfeffer" />
+    <meta name="author" content="Samyar Modabber" />
+
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/black.css" />
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        
+        <section id="my">
+          <h1>Partial Identifiability <br> for NMF</h1>
+          <h4>Samyar Modabber</h4>
+        </section>
+        <!-- Introduction -->
+        <section id="pi">
+          <p>Part 1:</p>
+          <h2 class="r-fit-text">Introduction</h2>
+        </section>
+        <section id="ldr">
+          <h5>LDR (Linear dimensionality reduction)</h5>
+          <p class="fragment">
+            Find small number $r$ of basis vectors such that <br />
+            each data point is well approximated by a linear combination of
+            these basis vectors.
+          </p>
+          <br />
+          <ul>
+            <li class="fragment">
+              Input: $\left\{ {{x}_{j}}\in {{\mathbb{R}}^{m}}
+              \right\}_{j=1}^{n}$
+            </li>
+            <li class="fragment">
+              Output: $\left\{ {{w}_{k}}\in {{\mathbb{R}}^{m}}
+              \right\}_{k=1}^{r}$
+            </li>
+            <li class="fragment">
+              Goal: Min $r$ such that ${{x}_{j}}\approx
+              \sum\limits_{k=1}^{r}{{{w}_{k}}{{h}_{kj}}}$
+            </li>
+          </ul>
+        </section>
+
+        <section id="lr">
+          <h5>LRMA (low-rank matrix approximation)</h5>
+          <ul>
+            <li class="fragment">Input: $X\in{{\mathbb{R}}^{m\times n}}$</li>
+            <li class="fragment">
+              Output: $W\in {{\mathbb{R}}^{m\times r}}, H \in
+              {{\mathbb{R}}^{r\times n}}$
+            </li>
+            <li class="fragment">Goal: MIN $r$ such that $X\approx WH$</li>
+          </ul>
+        </section>
+
+        <section id="">
+          <h5>LDR is equivalent to LRMA</h5>
+          <p class="fragment">
+            \[\begin{matrix} {} & LDR & \Leftrightarrow & LRMA \\ \forall j\in
+            {{\mathbb{N}}_{n}} & {{x}_{j}} & {} & X\left( :,j \right) \\ \forall
+            k\in {{\mathbb{N}}_{r}} & {{w}_{k}} & {} & W\left( :,k \right) \\
+            \forall j\in {{\mathbb{N}}_{n}} & {{h}_{j}} & {} & H\left( :,j
+            \right) \\ \end{matrix}\]
+          </p>
+        </section>
+
+        <section id="nmf">
+          <h5>NMF (Nonnegative matrix factorization)</h5>
+          <ul>
+            <li class="fragment">
+              Input: <br />
+              nonnegetive matrix: $X\in \mathbb{R}_{+}^{m\times n}$ ,<br />
+              factorization rank: $r$, <br />
+              distance measure: $D:\ \mathbb{R}_{+}^{m\times n}\times
+              \mathbb{R}_{+}^{m\times n}\to {{\mathbb{R}}_{+}}$
+            </li>
+            <li class="fragment">
+              Output: $W\in \mathbb{R}_{+}^{m\times r},\ H\in
+              \mathbb{R}_{+}^{r\times n}$
+            </li>
+            <li class="fragment">
+              Goal: $$\underset{W,H}{\mathop{\min }}\,D\left( X,WH \right)$$
+            </li>
+          </ul>
+        </section>
+
+        <section id="enmf">
+          <h5>Exact NMF with rank r</h5>
+          <p class="r-fit-text">
+            $\left( C,S \right)$ is called an Exact NMF of rank $r$ for $R\in
+            \mathbb{R}_{+}^{m\times n}$ <br />
+            and we write $R\ \overset{Er}{\mathop{=}}\,C{{S}^{T}}$ if:
+          </p>
+          <ul>
+            <li class="fragment">
+              i) $C\in \mathbb{R}_{+}^{m\times r},\ S\in \mathbb{R}_{+}^{n\times
+              r}$
+            </li>
+            <li class="fragment">ii) $R=C{{S}^{T}}$</li>
+          </ul>
+        </section>
+
+        <section id="def1">
+          <h5>Basic Definitions</h5>
+          <p class="fragment">
+            Let $A\in \mathbb{R}_{{}}^{m\times n}\ $ and ${{e}^{T}}=\left[ 1\
+            \cdots 1 \right]$, then we define:
+          </p>
+          <ul class="r-fit-text">
+            <li class="fragment">
+              1) Column space: $col\left( A \right):=\left\{ \left. Ay
+              \right|y\in {{\mathbb{R}}^{n}} \right\}$
+            </li>
+            <li class="fragment">
+              2) Affin hull: $aff\left( A \right):=\left\{ \left. Ay \right|y\in
+              {{\mathbb{R}}^{n}},\ {{e}^{T}}y=1 \right\}$
+            </li>
+            <li class="fragment">
+              3) Conical hull: $cone\left( A \right):=\left\{ \left. Ay
+              \right|y\in {{\mathbb{R}}^{n}},\ y\ge 0 \right\}$
+            </li>
+            <li class="fragment">
+              4) Convex hull: $conv\left( A \right):=\left\{ \left. Ay
+              \right|y\in {{\mathbb{R}}^{n}},\ {{e}^{T}}y=1,\ y\ge 0 \right\}$
+            </li>
+            <li class="fragment">
+              5) Support: $\operatorname{supp}\left( A \right)=\left\{ \left.
+              \left( i,j \right) \right|A\left( i,j \right)\ne 0 \right\}$,<br />
+              for vectors $\operatorname{supp}\left( a \right)=\left\{ \left. j
+              \right|{{a}_{j}}\ne 0 \right\}$
+            </li>
+            <li class="fragment">
+              6) A is stochastic if ${{e}^{T}}A={{e}^{T}}$
+            </li>
+            <li class="fragment">
+              7) Normalized of A: $\theta \left( A \right):=\left[
+              \begin{matrix}{}^{{{a}_{1}}}/{}_{{{\left\| {{a}_{1}}
+              \right\|}_{1}}} & \cdots & {}^{{{a}_{n}}}/{}_{{{\left\| {{a}_{n}}
+              \right\|}_{1}}} \\ \end{matrix} \right]$
+            </li>
+            <li class="fragment">
+              8) Nonnegative Orthant: $\mathbb{R}_{+}^{n}:=\left\{ \left. y
+              \right|y\in {{\mathbb{R}}^{n}},\ y\ge 0 \right\}$
+            </li>
+          </ul>
+        </section>
+
+        <section id="rl">
+          <h5>Remark:</h5>
+          <ul class="r-fit-text">
+            <p class="fragment">
+              1. $conv\left( A \right)\subseteq aff\left( A \right)\subseteq
+              col\left( A \right)$
+            </p>
+            <p class="fragment">
+              2. For an Exact NMF $R\overset{Er}{\mathop{=}}\,C{{S}^{T}}$, we
+              can assume w.l.o.g. that$R,\ C\ and\ {{S}^{T}}$ are stochastic.
+            </p>
+            <p class="fragment">Proof: First remove zero columns then define</p>
+            <p class="fragment">
+              $$\begin{align}
+              & {{R}_{n}}\left( :,j \right):=\frac{R\left( :,j \right)}{{{e}^{T}}R\left( :,j \right)}=\frac{\sum\limits_{k=1}^{r}{C\left( :,k \right)S\left( j,k \right)}}{{{e}^{T}}R\left( :,j \right)} \\ 
+              & =\sum\limits_{k=1}^{r}{\left( \frac{C\left( :,k \right)}{{{e}^{T}}C\left( :,j \right)} \right)\left( \frac{{{e}^{T}}C\left( :,j \right)}{{{e}^{T}}R\left( :,j \right)}S\left( j,k \right) \right)} \\ 
+              & =\sum\limits_{k=1}^{r}{{{C}_{n}}\left( :,k \right){{S}_{n}}\left( j,k \right)} \\ 
+              \end{align}$$
+            
+            </p>
+            <p class="fragment">
+              Hence ${{R}_{n}}$and ${{C}_{n}}$are stochastic and for
+              $S_{n}^{T}$: ${{e}^{T}}S_{n}^{T}=\left( {{e}^{T}}{{C}_{n}}
+              \right)S_{n}^{T}={{e}^{T}}{{R}_{n}}={{e}^{T}}$
+            </p>
+          </ul>
+        </section>
+
+        <section id="npp">
+          <h5>NPP (Nested polytope problem) with d and p:</h5>
+          <ul class="r-fit-text">
+            <p class="fragment">
+            Input: ${{P}_{inn}},\ {{P}_{out}}$ such that:
+            </p>
+            <p class="fragment">1)	full-dimensional inner polytope: $${{P}_{inn}}:=\ conv\left( \left[ {{v}_{1}},{{v}_{2}},\cdots ,{{v}_{n}} \right] \right)\subseteq {{\mathbb{R}}^{d}}$$</p>
+            <p class="fragment">2)	full-dimensional outer polytope: $${{P}_{out}}:=\ \left\{ \left. x\in {{\mathbb{R}}^{d}} \right|Fx+g\ge 0 \right\}$$where $F\in \mathbb{R}_{{}}^{m\times r},\ g\in {{\mathbb{R}}^{m}}$</p>
+            <p class="fragment">Output: ${{P}_{bet}}$</p>
+            <p class="fragment">Goal: ${{P}_{inn}}\subseteq {{P}_{bet}}\subseteq {{P}_{out}}$ where has $p$vertices such that $p\ge d+1$</p>
+          </ul>
+        </section>
+
+        <section id="t1">
+          <h5>Theorem 1</h5>
+          <p class="fragment r-fit-text">The Exact NMF problem with $r\text{ }=\text{ }rank\left( R \right)$ <br> is equivalent to  <br>an NPP with $d\text{ }=\text{ }rank\left( R \right)\text{ }-\text{ }1$ and $p\text{ }=\text{ }d\text{ }+\text{ }1$, and vice versa.</p>
+        
+
+        </section>
+
+        <section id="e1">
+          <h5>Example 1</h5>
+          <ul class="r-fit-text">
+            <p class="fragment">
+            ${{P}_{inn}}:=\ conv\left( \left[ {{v}_{1}}=\left[ \begin{matrix}
+              0.5  \\
+              0  \\
+            \end{matrix} \right],{{v}_{2}}=\left[ \begin{matrix}
+              0  \\
+              0.5  \\
+            \end{matrix} \right],{{v}_{3}}=\left[ \begin{matrix}
+              0.25  \\
+              0.75  \\
+            \end{matrix} \right],{{v}_{4}}=\left[ \begin{matrix}
+              0.75  \\
+              0.25  \\
+            \end{matrix} \right] \right] \right)\subseteq {{\mathbb{R}}^{2}}$
+            </p>
+            <p class="fragment">
+            ${{P}_{out}}:=\ \left\{ \left. x\in {{\mathbb{R}}^{2}} \right|Fx+g={{\left[ \begin{matrix}
+              0 & 0 & 1 & -1  \\
+              1 & -1 & 0 & 0  \\
+            \end{matrix} \right]}^{T}}x+{{\left[ \begin{matrix}
+              0 & 1 & 0 & 1  \\
+            \end{matrix} \right]}^{T}}\ge 0 \right\}$
+            </p>
+            <p class="fragment">
+              $R\left( :,j \right)=F{{v}_{j}}+g=\frac{1}{4}\left[ \begin{matrix}
+                0 & 2 & 3 & 1  \\
+                4 & 2 & 1 & 3  \\
+                2 & 0 & 1 & 3  \\
+                2 & 4 & 3 & 1  \\
+              \end{matrix} \right]$ 
+            </p>
+    
+            <p class="fragment">
+              ${{P}_{bet}}:=\ conv\left( \left[ {{s}_{1}}=\left[ \begin{matrix}
+                0  \\
+                0  \\
+              \end{matrix} \right],{{s}_{2}}=\left[ \begin{matrix}
+                0  \\
+                1  \\
+              \end{matrix} \right],{{s}_{3}}=\left[ \begin{matrix}
+                1  \\
+                0  \\
+              \end{matrix} \right] \right] \right)$
+            </p>
+
+            <p class="fragment">
+            $C\left( :,j \right)=F{{s}_{j}}+g=\left[ \begin{matrix}
+              0 & 0 & 1  \\
+              1 & 1 & 0  \\
+              0 & 1 & 0  \\
+              1 & 0 & 1  \\
+            \end{matrix} \right]$
+            </p>
+
+          </ul>
+          <aside class="notes">
+            <ol>
+              <li>Let us consider the NPP with $d=2$</li>
+              <li>Find column of $R$</li>
+              <li>Looking at Figure 2, we observe that ${{P}_{bet}}$ is nested triangle between ${{P}_{inn}}$ and ${{P}_{out}}$ with vertices:</li>
+              <li>For calculate columns of $C$we use ${{s}_{j}}$:</li>
+            </ol>
+          </aside>
+        </section>
+        
+        <!-- Full identifiability -->
+        <section id="pi">
+          <p>Part 2:</p>
+          <h2 class="r-fit-text">Full <br> identifiability</h2>
+        </section>
+        <section id="fi">
+          <h5>Full identifiability</h5>
+          <ul class="r-fit-text">
+            <p class="fragment">$\left( {{C}_{*}},{{S}_{*}} \right)$ is called a (full) identifiability Exact NMF of rank $r$ for $R\in \mathbb{R}_{+}^{m\times n}$ <br> and we write $R\ \overset{Fr}{\mathop{=}}\,C{{S}^{T}}$ if:</p>
+            <p class="fragment">i)	$R\ \overset{\ Er}{\mathop{=}}\,{{C}_{*}}S_{*}^{T}$</p>
+            <p class="fragment">ii)	$\forall \ R \: \overset{Er}{\mathop{=}}\: C{{S}^{T}}\ \exists \: \pi :{{\mathbb{N}}_{r}}\to {{\mathbb{N}}_{r}}\ \exists \: 0 \le \alpha \in {{\mathbb{R}}^{r}}$ such that:</p>
+            <p class="fragment">$$C\left( :,k \right)={{\alpha }_{k}}{{C}_{*}}\left( :,{{\pi }_{k}} \right)\ ,\ \ S\left( :,k \right)=\frac{1}{{{\alpha }_{k}}}{{S}_{*}}\left( :,{{\pi }_{k}} \right)$$</p>
+          </ul>
+        </section>
+
+
+        <section id="fir">
+          <h5>Remark</h5>
+          <ul class="r-fit-text">
+            <p class="fragment">
+                1)	We can use matrix note in definition of full identifiability:
+            </p>
+            <p class="fragment">
+              $\forall \ R\overset{Er}{\mathop{=}}\,C{{S}^{T}}$, there exists a permutation matrix $\Pi \in {{\left\{ 0,1 \right\}}^{r\times r}}$ and a nonsingular diagonal scaling matrix $D$ such that \[C={{C}_{*}}\Pi D\ \wedge \ {{S}^{T}}={{D}^{-1}}{{\Pi }^{T}}S_{*}^{T}\]
+            </p>
+            <p class="fragment">
+              2)	Full identifiability also known as unique, or essentially unique.
+            </p>
+
+          </ul>
+        </section>
+
+        <section id="t2">
+          <h5>Theorem 2</h5>
+          <ul class="r-fit-text">
+            <p class="fragment">
+            $R\ \overset{\ Fr}{\mathop{=}}\,{{C}_{*}}S_{*}^{T}\ \Rightarrow \ \ \forall j,{j}'\ \ j\ne {j}'\ \ \ \operatorname{supp}\left( {{C}_{*}}\left( :,j \right) \right)\not\subset \operatorname{supp}\left( {{C}_{*}}\left( :,{j}' \right) \right)$
+
+            </p>
+            <aside class="notes">
+              $\left( resp.\ {{S}_{*}} \right)$
+            </aside>
+          </ul>
+        </section>
+
+        <section id="sp">
+          <h5>Separability</h5>
+          <ul class="r-fit-text">
+            <p class="fragment">
+              The matrix $C\in \mathbb{R}_{{}}^{m\times r}$with $m\text{ }\ge \text{ }r$ is called separable if $cone\left( C \right)=\mathbb{R}_{+}^{r}$
+            </p>
+            <p class="fragment">
+            Or equivalently, <br>
+            there exists an index set $K$ of size $r$ such that $C\left( K,: \right)\in \mathbb{R}_{{}}^{r\times r}$ is a nonsingular diagonal matrix.
+            </p>
+          </ul>
+        </section>
+
+        <section id="ssc">
+          <h5>SSC (sufficiently scattered condition)</h5>
+          <ul class="r-fit-text">
+            <p class="fragment">
+              $C\in \mathbb{R}_{{}}^{m\times r}$with $ m\text{ }\ge \text{ }r$ satisfies $SSC$ if:
+            </p>
+            <p class="fragment">1)	$L:=\left\{ \left. x\in \mathbb{R}_{+}^{r} \right|{{e}^{T}}x\ge \sqrt{r-1}{{\left\| x \right\|}_{2}} \right\}\subseteq cone\left( {{C}^{T}} \right)$</p>
+            <p class="fragment">2)	Does not exist any orthogonal matrix $Q$ ($Q{{Q}^{T}}=I\ $) such that $$cone\left( {{C}^{T}} \right)\subseteq cone\left( Q \right),$$ except for permutation matrices. </p>
+            <p class="fragment">$L$is a Lorentz cone, also known as a second-order cone or an ice cream cone.</p>
+          </ul>
+        </section>
+
+        <section id="t3">
+          <h5>Theorem 3 & 4</h5>
+          <ul class="r-fit-text">
+            <p class="fragment">
+              Let $R\overset{Er}{\mathop{=}}\,{{C}_{*}}S_{*}^{T}$. If ${{C}_{*}}$ and $S_{*}^{T}$are separable or satisfy the SSC, then $R\overset{Fr}{\mathop{=}}\,{{C}_{*}}S_{*}^{T}$.
+            </p>
+          </ul>
+        </section>
+        
+        <!-- Partial identifiability -->
+        <section id="pi">
+          <p>Part 3:</p>
+          <h2 class="r-fit-text">Partial <br> Identifiability</h2>
+        </section>
+        <section id="pi">
+          <h5>Partial identifiability</h5>
+          <ul class="r-fit-text">
+            <p class="fragment">
+              Let $R\ \overset{\ Er}{\mathop{=}}\,{{C}_{*}}S_{*}^{T}$. The ${{C}_{*}}\left( :,k \right)$ is called identifiable if
+            </p>
+            <p class="fragment">
+              $\forall \ R\overset{Er}{\mathop{=}}\,C{{S}^{T}}\ \exists j\ \ \exists \alpha >0\ \ \ \ {{C}_{*}}\left( :,k \right)=\alpha C\left( :,j \right)$
+            </p>
+          </ul>
+        </section>
+
+        <section id="dbu">
+          <h5>Restricted DBU theorem</h5>
+          <ul class="r-fit-text">
+            <p class="fragment">
+              Let $R\ \overset{\ Er}{\mathop{=}}\,{{C}_{*}}S_{*}^{T}$. The ${{C}_{*}}\left( :,k \right)$ is identifiable if: 
+            </p>
+            <p class="fragment">
+              1)	FRZRW (Full-rank zero-region window): <br>
+              $$rank\left( {{C}_{*}}\left( I,: \right) \right)=r-1$$
+              where $I=\left\{ \left. i \right|{{C}_{*}}\left( i,k \right)=0 \right\}=\text{supp}{{\left( C\left( :,k \right) \right)}^{c}}$
+            </p>
+            <p class="fragment">
+              2)	SW (Selective window): <br>
+              $$\exists j\ \exists \alpha >0\ \ \ \ {{S}_{*}}\left( j,: \right)=\alpha e_{\left( k \right)}^{T}$$
+            </p>
+          </ul>
+        </section>
+
+        <section id="e2">
+          <h5>Example 2</h5>
+          <ul class="r-fit-text">
+            <p class="fragment">
+              $R\ \overset{\ Er}{\mathop{=}}\,{{C}_{*}}S_{*}^{T}=\left[ \begin{matrix}
+                2 & 2 & 2  \\
+                1 & 3 & 1  \\
+                1 & 1 & 3  \\
+                0 & 2 & 2  \\
+                0 & 1 & 2  \\
+              \end{matrix} \right]\left[ \begin{matrix}
+                1 & 0 & 0  \\
+                0 & 1 & 0  \\
+                0 & 0 & 1  \\
+              \end{matrix} \right]$
+            </p>
+            <p class="fragment">
+              $I=\left\{ 4,5 \right\}\ \Rightarrow C\left( I,: \right)=\left[ \begin{matrix}
+              0 & 2 & 2  \\
+              0 & 1 & 2  \\
+            \end{matrix} \right]\ \Rightarrow rank\left( C\left( I,: \right) \right)=2=3-1=r-1$
+            </p>
+            <p class="fragment">
+              $\exists j=1\ \exists \alpha =1>0\ \ \ \ {{S}_{*}}\left( 1,: \right)=e_{\left( 1 \right)}^{T}$
+            </p>
+          </ul>
+        </section>
+
+        <section id="str">
+          <h5>SSC is stronger than the FRZRW condition.</h5>
+          <ul class="r-fit-text">
+            <p class="fragment">Let us consider the 4-by-6 matrix H containing all 2-sparse columns with non-zero entries equal to 1:</p>
+            <p class="fragment">
+              $$C_{*}^{T}=\left[ \begin{matrix}
+                1 & 0 & 0 & 1 & 1 & 0  \\
+                0 & 1 & 0 & 1 & 0 & 1  \\
+                0 & 0 & 1 & 0 & 1 & 1  \\
+                1 & 1 & 1 & 0 & 0 & 0  \\
+              \end{matrix} \right]$$
+            </p>
+            <p class="fragment">satisfies the FRZRW condition, <br> but $X:={{C}_{*}}C_{*}^{T}$ does not admit a unique NMF <br> since $X=C{{C}^{T}}$ is another exact NMF with</p>
+            <p class="fragment">
+              \[{{C}^{T}}:=\ \left[ \begin{matrix}
+                1 & 1 & 1 & 0 & 0 & 0  \\
+                1 & 0 & 0 & 1 & 1 & 0  \\
+                0 & 1 & 0 & 1 & 0 & 1  \\
+                0 & 0 & 1 & 0 & 1 & 1  \\
+              \end{matrix} \right] \]
+            </p>
+          </ul>
+        </section>
+
+        <section id="mf">
+          <h5>Minimal face of $C$ containing $y$</h5>
+          <ul class="r-fit-text">
+            <p class="fragment">
+              Let $C\in \mathbb{R}_{+}^{m\times r}$be a stochastic matrix and $y\in \Gamma =col\left( C \right)\bigcap \Delta $. <br> We define minimal face of $C$ containing $y$ by
+            </p>
+            <p class="fragment">
+              $$\begin{align}
+                & {{F}_{C}}\left( y \right)=\left\{ \left. x\in \Gamma  \right|\text{supp}\left( x \right)\subseteq \text{supp}\left( y \right) \right\} \\ 
+                & =\left\{ \left. Cz \right|\text{z}\in {{\mathbb{R}}^{r}}\text{,}\ \ {{\text{e}}^{T}}\text{z=1}\text{,}\ {{y}_{i}}=0\Rightarrow {{\left( Cz \right)}_{i}}=0 \right\}  
+              \end{align}$$
+            </p>
+          </ul>
+        </section>
+
+        <section id="l1">
+          <h5>Lemma 1</h5>
+          <ul class="r-fit-text">
+            <p class="fragment">
+              Let $C\in \mathbb{R}_{+}^{m\times r}$ be a nonsingular stochastic matrix. <br> Then ${{C}_{*}}\left( :,k \right)$ has FRZRW condition if and only if
+            </p>
+            <p class="fragment">
+              $${{F}_{C}}\left( C\left( :,k \right) \right)=\left\{ C\left( :,k \right) \right\}$$
+            </p>
+          </ul>
+        </section>
+
+        <section id="t7">
+          <h5>Theorem 7</h5>
+          <ul class="r-fit-text">
+            <p class="fragment">
+              Let $R\ \overset{\ Er}{\mathop{=}}\,{{C}_{*}}S_{*}^{T}$ with $r=rank\left( R \right)$. 
+              The ${{C}_{*}}\in \mathbb{R}_{+}^{m\times r}$ and $S_{*}^{T}\in \mathbb{R}_{+}^{n\times r}$ are stochastic. 
+              <br> Then ${{C}_{*}}\left( :,k \right)$is identifiable if
+            </p>
+            <p class="fragment">
+              1)	it satisfies the selective window condition
+            </p>
+            <p class="fragment">
+              2)	there exists index set $J$such that 
+            </p>
+            <p class="fragment">
+              $$rank\left( R\left( :,J \right) \right)=r-1\ \\ \\ \ \forall j\in J\ {{F}_{{{C}_{*}}}}\left( {{C}_{*}}\left( :,k \right) \right)\bigcap {{F}_{{{C}_{*}}}}\left( R\left( :,j \right) \right)=\varnothing $$
+            </p>
+          </ul>
+        </section>
+        
+        <section id="e3">
+          <h5>Example 3</h5>
+          <ul class="r-fit-text">
+            <p class="fragment">
+              ${{P}_{inn}}:=\ conv\left( \left[ {{v}_{1}}=\left[ \begin{matrix}
+              0.5  \\
+              0  \\
+              \end{matrix} \right],{{v}_{2}}=\left[ \begin{matrix}
+              0.2  \\
+              1  \\
+              \end{matrix} \right],{{v}_{3}}=\left[ \begin{matrix}
+              0.8  \\
+              1  \\
+              \end{matrix} \right] \right] \right)\subseteq {{\mathbb{R}}^{2}}$
+            </p>
+            <p class="fragment">
+              ${{P}_{out}}:=\ \left\{ \left. x\in {{\mathbb{R}}^{2}} \right|Fx+g={{\left[ \begin{matrix}
+                 0 & 0 & 1 & -1  \\
+                 1 & -1 & 0 & 0  \\
+              \end{matrix} \right]}^{T}}x+{{\left[ \begin{matrix}
+                 0 & 1 & 0 & 1  \\
+              \end{matrix} \right]}^{T}}\ge 0 \right\}$
+            </p>
+            <p class="fragment">
+              $R=\left[ \begin{matrix}
+                 0 & 1 & 1  \\
+                 1 & 0 & 0  \\
+                 0.5 & 0.2 & 0.8  \\
+                 0.5 & 0.8 & 0.2  \\
+              \end{matrix} \right]=\left[ \begin{matrix}
+                 0 & 1 & 1  \\
+                 1 & 0 & 0  \\
+                 0.5 & 0 & 1  \\
+                 0.5 & 1 & 0  \\
+              \end{matrix} \right]\left[ \begin{matrix}
+                 1 & 0 & 0  \\
+                 0 & 0.8 & 0.2  \\
+                 0 & 0.2 & 0.8  \\
+              \end{matrix} \right]={{C}_{*}}S_{*}^{T}$
+            </p>
+            <p class="fragment">
+              $C\left( :,1 \right)$ satisfies the selective window and minimal faces of $R\left( :,\left[ 2,3 \right] \right)$do not intersect with minimal faces of $C\left( :,1 \right)$
+            </p>
+          </ul>
+
+          <aside class="notes">
+            <ol>
+              <li>
+                Let us consider the NPP with d=2
+              </li>
+              <li>
+                Similar to example 1
+              </li>
+            </ol>
+          </aside>
+        </section>
+
+        <section id="c1">
+          <h5>
+            Corollary 1
+          </h5>
+          <ul class="r-fit-text">
+            <p class="fragment">
+              Let $R\ \overset{\ Er}{\mathop{=}}\,{{C}_{*}}S_{*}^{T}$ with $r=rank\left( R \right)$, ${{C}_{*}}\in \mathbb{R}_{+}^{m\times r}$ and $S_{*}^{T}\in \mathbb{R}_{+}^{n\times r}$ are stochastic. 
+              <br> Then $R\ \overset{\ Er}{\mathop{=}}\,{{C}_{*}}S_{*}^{T}$ if
+            </p>
+            <p class="fragment">
+              1)	$\forall k\ \ {{C}_{*}}\left( :,k \right)$satisfies the selective window condition.
+            </p>
+            <p class="fragment">
+              2)	$\forall k,j\ \ \ k\ne j\Rightarrow \ {{F}_{{{C}_{*}}}}\left( {{C}_{*}}\left( :,k \right) \right)\bigcap {{F}_{{{C}_{*}}}}\left( {{C}_{*}}\left( :,j \right) \right)=\varnothing $ 
+            </p>
+          </ul>
+          
+        </section>
+
+        <section id="e4">
+          <h5>
+            Example 4
+          </h5>
+          <ul class="r-fit-text">
+            <p class="fragment">
+              ${{P}_{inn}}:=\ conv\left( \left[ {{v}_{1}}=\left[ \begin{matrix}
+                 0  \\
+                 0  \\
+                 0.75  \\
+              \end{matrix} \right],{{v}_{2}}=\left[ \begin{matrix}
+                 0  \\
+                 1  \\
+                 0.25  \\
+              \end{matrix} \right],{{v}_{3}}=\left[ \begin{matrix}
+                 1  \\
+                 1  \\
+                 0.75  \\
+              \end{matrix} \right] \right] \right)\subseteq {{\mathbb{R}}^{3}}$
+            </p>
+            <p class="fragment">
+              ${{P}_{out}}:=\ {{\left[ 0,1 \right]}^{3}}$
+            </p>
+            <p class="fragment">
+              satisfies the conditions of Theorem 7 for all k
+            </p>
+            <p class="fragment">
+              since the vertices of ${{P}_{inn}}$ are on (minimal) faces (namely, edges) that do not intersect.
+            </p>
+            <p class="fragment">
+              therefore R has a unique exact NMF
+            </p>
+
+          </ul>
+          <aside class="notes">
+            Let us consider the NPP with $d=3$
+          </aside>
+        </section>
+
+        
+        <section id="">
+          <h5></h5>
+          <ul class="r-fit-text">
+            <p class="">
+              End Slide
+              QR Code to presentation
+            </p>
+          </ul>
+        </section>
+
+      </div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/math/math.js"></script>
+
+    <script src="plugin/highlight/highlight.js"></script>
+
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="plugin/search/search.js"></script>
+
+    <script src="node_modules/reveal.js-menu/menu.js"></script>
+
+    <script>
+      // Also available as an ES module, see:
+      // https://revealjs.com/initialization/
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        center: false,
+        hash: true,
+        slideNumber: true,
+        // Enable slide navigation via mouse wheel
+        mouseWheel: true,
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [
+          RevealZoom,
+          RevealNotes,
+          RevealSearch,
+          RevealMarkdown,
+          RevealHighlight,
+          RevealMath.KaTeX,
+          RevealMenu,
+        ],
+      });
+    </script>
+    <script>
+      renderMathInElement(document.body, {
+        delimiters: [
+          { left: '$$', right: '$$', display: true },
+          { left: '\\[', right: '\\]', display: true },
+          { left: '$', right: '$', display: false },
+          { left: '\\(', right: '\\)', display: false },
+        ],
+      });
+    </script>
+  </body>
+</html>
