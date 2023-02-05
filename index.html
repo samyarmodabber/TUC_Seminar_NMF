@@ -299,7 +299,7 @@
           </aside>
           </section>     
           <section>
-            <img src="/images/Example01.png" alt="Example 1">
+            <img data-src="/images/Example01.png" alt="Example 1">
           </section>
       </section>
         <!-- Full identifiability -->
@@ -370,7 +370,7 @@
           </section>
 
           <section>
-            <img src="/images/SSCvsSeparability.jpg" alt="" width="600" height="400">
+            <img data-src="/images/SSCvsSeparability.jpg" alt="" width="600" height="400">
           </section>
 
           <section id="t3">
@@ -472,7 +472,7 @@
             </ul>
           </section>
           <section>
-            <img src="/images/Remark02.png" alt="">
+            <img data-src="/images/Remark02.png" alt="">
           </section>
 
           <section id="mf">
@@ -583,7 +583,7 @@
             </aside>
           </section>
           <section>
-            <img src="/images/Example03.png" alt="">
+            <img data-src="/images/Example03.png" alt="">
           </section>
 
           <section id="c1">
@@ -646,7 +646,7 @@
             </aside>
           </section>
           <section>
-            <img src="/images/Example04.png" alt="">
+            <img data-src="/images/Example04.png" alt="">
           </section>
         </section>
         
@@ -674,10 +674,9 @@
     <script src="plugin/search/search.js"></script>
     
     <!-- Plugin -->
-    <script src="node_modules/reveal.js-menu/menu.js"></script>
+    <script src="plugin/menu/menu.js"></script>
     <script src="plugin/drawer/drawer.js"></script>
     <script src="plugin/verticator/verticator.js"></script>
-    <script src="plugin/simplemenu/simplemenu.js"></script>
 
     <script>
       // Also available as an ES module, see:
@@ -688,7 +687,7 @@
         progress: true,
         center: false,
         hash: true,
-        slideNumber: true,
+        slideNumber: false,
         // Enable slide navigation via mouse wheel
         mouseWheel: true,
 
@@ -703,7 +702,6 @@
           RevealMenu,
           RevealDrawer, //ctrl+T
           Verticator,
-          // Simplemenu, //Not Work
         ],
         // For Math Latex
         katex: {
