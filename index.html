@@ -31,7 +31,7 @@
   <body>
     <div class="reveal">
       <div class="slides">
-        <section id="intro">
+        <section id="">
           <section id="Title">
             <h1 class="r-fit-text">Partial Identifiability <br> for NMF</h1>
             <h4>Samyar Modabber</h4>
@@ -57,15 +57,13 @@
           </section>
         </section>
 
-
-
-
-        <!-- Exact NMF -->
-        <section id="pi">
+        <!-- Introduction -->
+        <section id="introduction">
           <section id="pi">
             <p>Part 1:</p>
-            <h1 class="r-fit-text">Exact NMF</h1>
+            <h1 class="r-fit-text">Introduction</h1>
           </section>
+
           <section id="ldr">
             <h5>LDR (Linear dimensionality reduction)</h5>
             <p class="fragment">
@@ -89,11 +87,11 @@
               </li>
             </ul>
           </section>
-
+  
           <section>
             <img data-src="https://mdbr.s3.eu-central-1.amazonaws.com/TUC/Seminar_NMF/LDR.png" alt="LDR">
           </section>
-
+  
           <section id="lr">
             <h5>LRMA (low-rank matrix approximation)</h5>
             <ul>
@@ -105,7 +103,7 @@
               <li class="fragment">Goal: MIN $r$ such that $X\approx WH$</li>
             </ul>
           </section>
-
+  
           <section id="">
             <h5>LDR is equivalent to LRMA</h5>
             <p class="fragment">
@@ -116,7 +114,7 @@
               \right) \\ \end{matrix}\]
             </p>
           </section>
-
+  
           <section id="nmf">
             <h5>NMF (Nonnegative matrix factorization)</h5>
             <ul>
@@ -135,16 +133,6 @@
                 Goal: $$\underset{W,H}{\mathop{\min }}\,D\left( X,WH \right)$$
               </li>
             </ul>
-          </section>
-
-          <section id="enmf">
-            <h5>Exact NMF with rank r</h5>
-            <p class="r-fit-text">
-              Decomposition $R=C{{S}^{T}}$ of $R\in \mathbb{R}_{+}^{m\times n}$ is called <br> an Exact NMF of size $r$ for and we write $R\ \overset{Exact}{\mathop{=}}\,C{{S}^{T}}$ if:
-            </p>
-            <p>
-              $C\in \mathbb{R}_{+}^{m\times r},\ S\in \mathbb{R}_{+}^{n\times r}$
-            </p>
           </section>
 
           <section id="def1">
@@ -195,17 +183,38 @@
             </ul>
           </section>
 
+        </section>
+
+
+
+
+        <!-- Exact NMF -->
+        <section id="pi">
+          <section id="pi">
+            <p>Part 2:</p>
+            <h1 class="r-fit-text">Exact NMF</h1>
+          </section>
+
+          <section id="enmf">
+            <h5>Exact NMF</h5>
+
+            <p>
+              Decomposition $R=C{{S}^{T}}$ of $R\in \mathbb{R}_{+}^{m\times n}$ is called <br> an Exact NMF of size $r$ and we write $R\ \overset{Exact}{\mathop{=}}\,C{{S}^{T}}$ if:
+            </p>
+            <p>
+              $C\in \mathbb{R}_{+}^{m\times r},\ S\in \mathbb{R}_{+}^{n\times r}$
+            </p>
+          </section>
+
+
           <section id="rl">
-            <h5>Facts</h5>
+            <h5>Fact</h5>
+            <p class="fragment">
+                For an Exact NMF $R\overset{Exact}{\mathop{=}}\,C{{S}^{T}}$, 
+                w.l.o.g. <br> we can assume $R,\ C\ and \ {{S}^{T}}$ are <strong>stochastic</strong> .
+            </p>
             <ul class="r-fit-text">
-              <p class="fragment">
-                1. $conv\left( A \right)\subseteq aff\left( A \right)\subseteq
-                col\left( A \right)$
-              </p>
-              <p class="fragment">
-                2. For an Exact NMF $R\overset{Exact}{\mathop{=}}\,C{{S}^{T}}$, we
-                can assume w.l.o.g. that $R,\ C\ and\ {{S}^{T}}$ are stochastic.
-              </p>
+              
               <p class="fragment">Proof: First remove zero columns then define</p>
               <p class="fragment">
                 $$\begin{align*}
@@ -213,7 +222,6 @@
                 & =\sum\limits_{k=1}^{r}{\left( \frac{C\left( :,k \right)}{{{e}^{T}}C\left( :,j \right)} \right)\left( \frac{{{e}^{T}}C\left( :,j \right)}{{{e}^{T}}R\left( :,j \right)}S\left( j,k \right) \right)} \\ 
                 & =\sum\limits_{k=1}^{r}{{{C}_{n}}\left( :,k \right){{S}_{n}}\left( j,k \right)} \\ 
                 \end{align*}$$
-              
               </p>
               <p class="fragment">
                 Hence ${{R}_{n}}$and ${{C}_{n}}$are stochastic and for
@@ -224,23 +232,30 @@
           </section>
 
           <section id="npp">
-            <h5>NPP (Nested polytope problem) with d and p:</h5>
-            <ul class="r-fit-text">
-              <p class="fragment">
-              Input: ${{P}_{inn}},\ {{P}_{out}}$ such that:
-              </p>
-              <p class="fragment">1)	full-dimensional inner polytope: $${{P}_{inn}}:=\ conv\left( \left[ {{v}_{1}},{{v}_{2}},\cdots ,{{v}_{n}} \right] \right)\subseteq {{\mathbb{R}}^{d}}$$</p>
-              <p class="fragment">2)	full-dimensional outer polytope: $${{P}_{out}}:=\ \left\{ \left. x\in {{\mathbb{R}}^{d}} \right|Fx+g\ge 0 \right\}$$where $F\in \mathbb{R}_{{}}^{m\times r},\ g\in {{\mathbb{R}}^{m}}$</p>
-              <p class="fragment">Output: ${{P}_{bet}}$ with $p$ vertices st $p\ge d+1$</p>
-              <p class="fragment">Goal: ${{P}_{inn}}\subseteq {{P}_{bet}}\subseteq {{P}_{out}}$ </p>
-            </ul>
+            <h5>NPP (Nested polytope problem)</h5>
+
+            <small>A NPP with parameter $d$ and $p$</small>
+
+            <p class="fragment">
+            Input: ${{P}_{inn}},\ {{P}_{out}}$ such that:
+            </p>
+            <p class="fragment r-fit-text">1)	full-dimensional inner polytope: ${{P}_{inn}}:=\ conv\left( \left[ {{v}_{1}},{{v}_{2}},\cdots ,{{v}_{n}} \right] \right)\subseteq {{\mathbb{R}}^{d}}$</p>
+            <p class="fragment r-fit-text">2)	full-dimensional outer polytope: ${{P}_{out}}:=\ \left\{ \left. x\in {{\mathbb{R}}^{d}} \right|Fx+g\ge 0 \right\}$ <br> where $F\in \mathbb{R}_{{}}^{m\times r},\ g\in {{\mathbb{R}}^{m}}$</p>
+            <p class="fragment">Output: ${{P}_{bet}}$ with $p$ vertices such that $p\ge d+1$</p>
+            <p class="fragment">Goal: ${{P}_{inn}}\subseteq {{P}_{bet}}\subseteq {{P}_{out}}$ </p>
           </section>
 
           <section id="t1">
             <h5>Theorem 1</h5>
-            <p class="fragment r-fit-text">The Exact NMF problem with $r\text{ }=\text{ }rank\left( R \right)$ <br> is equivalent to  <br>an NPP with $d\text{ }=\text{ }rank\left( R \right)\text{ }-\text{ }1$ and $p\text{ }=\text{ }d\text{ }+\text{ }1$, and vice versa.</p>
-          
-
+            <p class="fragment r-fit-text">
+              An Exact NMF problem with $r\text{ }=\text{ }rank\left( R \right)$ <br> 
+            </p>
+            <p>
+              $$\Leftrightarrow $$ 
+            </p>
+            <p class="fragment r-fit-text">  
+              An NPP with $d\text{ }=\text{ }rank\left( R \right)\text{ }-\text{ }1$ <br> and $p\text{ }=\text{ }d\text{ }+\text{ }1$.
+            </p>
           </section>
 
           <section id="e1">
@@ -319,7 +334,7 @@
         <!-- Full identifiability -->
         <section id="p2">
           <section id="pi">
-            <P>Part 2:</P>
+            <P>Part 3:</P>
             <h1 class="r-fit-text">Full <br> identifiability</h1>
           </section>
 
@@ -330,22 +345,19 @@
               $$\forall \ R \: \overset{Exact}{\mathop{=}}\: C{{S}^{T}}\ \exists \: \pi :{{\mathbb{N}}_{r}}\to {{\mathbb{N}}_{r}}\ \exists \: 0 < \alpha \in {{\mathbb{R}}^{r}}$$
               $$C\left( :,k \right)={{\alpha }_{k}}{{C}_{*}}\left( :,{{\pi }_{k}} \right)\ ,\ \ S\left( :,k \right)^{T}=\frac{1}{{{\alpha }_{k}}}{{S}_{*}}\left( :,{{\pi }_{k}} \right)^{T}$$
             </p>
+            <small class="fragment">Full identifiability also known as unique, or essentially unique.</small>
           </section>
 
           <section id="fir">
             <h5>Remark</h5>
-            <ul class="r-fit-text">
-              <p class="">
-                  1)	We can use matrix notation in definition of full identifiability:
-              </p>
-              <p class="fragment">
-                $\forall \ R\overset{Exact}{\mathop{=}}\,C{{S}^{T}}$, there exists a permutation matrix $\Pi \in {{\left\{ 0,1 \right\}}^{r\times r}}$ and a nonsingular diagonal scaling matrix $D$ such that \[C={{C}_{*}}\Pi D\ \wedge \ {{S}^{T}}={{D}^{-1}}{{\Pi }^{T}}S_{*}^{T}\]
-              </p>
-              <p class="fragment">
-                2)	Full identifiability also known as unique, or essentially unique.
-              </p>
-
-            </ul>
+            <p class="">
+              Full identifiability with Matrix notation
+            </p>
+            <p class="fragment">
+                $\forall \ R\overset{Exact}{\mathop{=}}\,C{{S}^{T}}$, there exists <br> 
+                a permutation matrix $\Pi \in {{\left\{ 0,1 \right\}}^{r\times r}}$ and <br> 
+                a nonsingular diagonal scaling matrix $D$ <br> such that \[C={{C}_{*}}\Pi D\ \wedge \ {{S}^{T}}={{D}^{-1}}{{\Pi }^{T}}S_{*}^{T}\]
+            </p>
           </section>
 
           <section id="t2">
@@ -375,10 +387,8 @@
           <section id="t3">
             <h5>Theorem 3</h5>
             <p class="fragment">
-              The Exact NMF $R\overset{Exact}{\mathop{=}}\,{{C}_{*}}S_{*}^{T}$ <br> is a Full Identifiability <br> if ${{C}_{*}}$ and $S_{*}^{T}$ are <span class="fragment highlight-red">separable</span>.
+              The Exact NMF $R\overset{Exact}{\mathop{=}}\,{{C}_{*}}S_{*}^{T}$ <br> is a Full Identifiability <br> if ${{C}_{*}}$ and $S_{*}^{T}$ are <b>separable</b>.
             </p>
-            <ul class="r-fit-text">
-            </ul>
           </section>
 
           <section id="ssc">
@@ -392,28 +402,28 @@
                 <br>
                 $L$ is a Lorentz cone, also known as a second-order cone or an ice cream cone.
               </p>
-              <p class="fragment">2)	Does not exist any orthogonal matrix $Q$ ($Q{{Q}^{T}}=I\ $) such that $$cone\left( {{C}^{T}} \right)\subseteq cone\left( Q \right),$$ except for permutation matrices. </p>
+              <p class="fragment">2) Does not exist any orthogonal matrix $Q$ ($Q{{Q}^{T}}=I\ $) such that $$cone\left( {{C}^{T}} \right)\subseteq cone\left( Q \right),$$ except for permutation matrices. </p>
             </ul>
           </section>
 
+          
+          <section id="t4">
+            <h5>Theorem 4</h5>
+            <p class="fragment">
+              The Exact NMF $R\overset{Exact}{\mathop{=}}\,{{C}_{*}}S_{*}^{T}$ <br> is a Full Identifiability <br> if ${{C}_{*}}$ and $S_{*}^{T}$ satisfy the <b>SSC</b>.
+            </p>
+          </section>
+          
           <section>
             <img data-src="https://mdbr.s3.eu-central-1.amazonaws.com/TUC/Seminar_NMF/SSCvsSeparability.jpg" alt="" width="600" height="400">
           </section>
 
-          <section id="t4">
-            <h5>Theorem 4</h5>
-            <p class="fragment">
-              The Exact NMF $R\overset{Exact}{\mathop{=}}\,{{C}_{*}}S_{*}^{T}$ <br> is a Full Identifiability <br> if ${{C}_{*}}$ and $S_{*}^{T}$ satisfy the <span class="fragment highlight-red">SSC</span>.
-            </p>
-            <ul class="r-fit-text">
-            </ul>
-          </section>
         </section>
         
         <!-- Partial identifiability -->
         <section id="p3">
           <section id="pi">
-            <p>Part 3:</p>
+            <p>Part 4:</p>
             <h1 class="r-fit-text">Partial <br> Identifiability</h1>
           </section>
 
@@ -434,7 +444,7 @@
               Theorem 5
             </h5>
             <p>
-              $R\ \overset{\ Exact}{\mathop{=}}\,{{C}_{*}}S_{*}^{T}$ and ${{C}_{*}}\left( :,k \right)$is identifiable, then
+              If $R\ \overset{\ Exact}{\mathop{=}}\,{{C}_{*}}S_{*}^{T}$ and ${{C}_{*}}\left( :,k \right)$is identifiable,<br> then
             </p>
             <p class="fragment">
               $$\ \forall j\ \ j\ne k\ \ \operatorname{supp}\left( {{C}_{*}}\left( :,j \right) \right)\not\subset \operatorname{supp}\left( {{C}_{*}}\left( :,k \right) \right)$$ 
@@ -490,11 +500,11 @@
           </section>
 
           <section id="mf">
-            <h5>Minimal face of C containing y</h5>
-            <p class="fragment r-fit-text">
-                Let $C\in \mathbb{R}_{+}^{m\times r}$ be a stochastic matrix and <br> $y\in \Gamma =col\left( C \right)\bigcap \Delta $. <br> We define minimal face of $C$ containing $y$ by
+            <h5>Minimal face</h5>
+            <p class="fragment">
+                Let $C\in \mathbb{R}_{+}^{m\times r}$ be a stochastic matrix and <br> $y\in \Gamma =col\left( C \right)\bigcap \Delta $. <br> We define <b>minimal face</b> of $C$ containing $y$ by
             </p> 
-            <p class="fragment r-fit-text">
+            <p class="fragment">
                 $$
                 \begin{equation*}
                 \begin{aligned}
@@ -510,24 +520,25 @@
 
           <section id="l1">
             <h5>Lemma 1</h5>
-            <ul class="r-fit-text">
-              <p class="fragment">
-                Let $C\in \mathbb{R}_{+}^{m\times r}$ be a nonsingular stochastic matrix. <br> Then ${{C}_{*}}\left( :,k \right)$ has FRZRW condition if and only if
+              <p>
+                Let $C\in \mathbb{R}_{+}^{m\times r}$ be a <b>nonsingular</b> stochastic matrix. 
               </p>
               <p class="fragment">
+                ${{C}_{*}}\left( :,k \right)$ has FRZRW condition
+                <br>
+                $\Leftrightarrow $
+                <br>
                 $${{F}_{C}}\left( C\left( :,k \right) \right)=\left\{ C\left( :,k \right) \right\}$$
               </p>
-            </ul>
           </section>
 
           <section id="t7">
             <h5>Theorem 7</h5>
-            <ul class="r-fit-text">
               <p class="fragment">
-                Let $R\ \overset{Exact}{\mathop{=}}\,{{C}_{*}}S_{*}^{T}$ with $r=rank\left( R \right)$. 
-                The ${{C}_{*}}\in \mathbb{R}_{+}^{m\times r}$ and $S_{*}^{T}\in \mathbb{R}_{+}^{n\times r}$ are stochastic. 
-                <br> Then ${{C}_{*}}\left( :,k \right)$is identifiable if
+                Let $R\ \overset{Exact}{\mathop{=}}\,{{C}_{*}}S_{*}^{T}$ with $r=rank\left( R \right)$,
+                <br>${{C}_{*}}\in \mathbb{R}_{+}^{m\times r}$ and $S_{*}^{T}\in \mathbb{R}_{+}^{n\times r}$ are stochastic. 
               </p>
+                Then ${{C}_{*}}\left( :,k \right)$is identifiable if
               <p class="fragment">
                 1)	it satisfies the selective window condition
               </p>
@@ -537,7 +548,6 @@
               <p class="fragment">
                 $$rank\left( R\left( :,J \right) \right)=r-1\ \\ \\ \ \forall j\in J\ {{F}_{{{C}_{*}}}}\left( {{C}_{*}}\left( :,k \right) \right)\bigcap {{F}_{{{C}_{*}}}}\left( R\left( :,j \right) \right)=\varnothing $$
               </p>
-            </ul>
           </section>
           
           <section id="e3">
@@ -604,7 +614,7 @@
             <h5>
               Corollary 1
             </h5>
-            <p class="fragment">
+            <p>
                 Let $R\ \overset{Exact}{\mathop{=}}\,{{C}_{*}}S_{*}^{T}$ with $r=rank\left( R \right)$,
                 <br> ${{C}_{*}}\in \mathbb{R}_{+}^{m\times r}$ and $S_{*}^{T}\in \mathbb{R}_{+}^{n\times r}$ are stochastic. 
                 <br> Then $R\ \overset{\ Full}{\mathop{=}}\,{{C}_{*}}S_{*}^{T}$ if
