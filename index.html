@@ -64,7 +64,7 @@
         <section id="pi">
           <section id="pi">
             <p>Part 1:</p>
-            <h2 class="r-fit-text">Exact NMF</h2>
+            <h1 class="r-fit-text">Exact NMF</h1>
           </section>
           <section id="ldr">
             <h5>LDR (Linear dimensionality reduction)</h5>
@@ -88,6 +88,10 @@
                 \sum\limits_{k=1}^{r}{{{w}_{k}}{{h}_{kj}}}$
               </li>
             </ul>
+          </section>
+
+          <section>
+            <img src="/images/LDR.png" alt="LDR">
           </section>
 
           <section id="lr">
@@ -311,8 +315,8 @@
         <!-- Full identifiability -->
         <section id="p2">
           <section id="pi">
-            <P>Part 2</P>
-            <h2 class="r-fit-text">Full <br> identifiability</h2>
+            <P>Part 2:</P>
+            <h1 class="r-fit-text">Full <br> identifiability</h1>
           </section>
 
           <section id="fi">
@@ -393,7 +397,7 @@
         <section id="p3">
           <section id="pi">
             <p>Part 3:</p>
-            <h2 class="r-fit-text">Partial <br> Identifiability</h2>
+            <h1 class="r-fit-text">Partial <br> Identifiability</h1>
           </section>
 
           <section id="pi">
@@ -408,8 +412,9 @@
             </ul>
           </section>
 
-          <section id="dbu">
-            <h5>Restricted DBU theorem <br> (Data-Based uniqueness)</h5>
+          <section id="t6">
+            <h2>Theorem 6</h2>
+            <span>Restricted DBU (Data-Based uniqueness)</span>
             <ul class="r-fit-text">
               <p class="fragment">
                 Let $R\ \overset{Exact}{\mathop{=}}\,{{C}_{*}}S_{*}^{T}$. The ${{C}_{*}}\left( :,k \right)$ is identifiable if: 
@@ -654,19 +659,62 @@
           <section>
             <img data-src="/images/Example04.png" alt="">
           </section>
-        </section>
-        
-        <section id="">
-          <h2 class="r-fit-text">Thank you</h2>
-          <p class="r-fit-text">
-            Please find the presentation on my GitHub:
-            <a href="https://github.com/samyarmodabber/TUC_Seminar_NMF">
-              https://github.com/samyarmodabber/TUC_Seminar_NMF
-            </a>
-          </p>
-          <img data-src="/images/QR_NMFTUCSeminar.png" alt="" width="300rem" height="300rem">
-        </section>
+          
+          <section id="t8">
+            <h2>
+              Theorem 8
+            </h2>
+            <ul class="r-fit-text">
 
+              <p>
+                Let $R\ \overset{Exact}{\mathop{=}} {{C}_{*}}S_{*}^{T}$ with $r=rank\left( R \right)$, ${{C}_{*}}\in \mathbb{R}_{+}^{m\times r}$ and $S_{*}^{T}\in \mathbb{R}_{+}^{n\times r}$ <br> and w.l.o.g $\forall j=1,\ 2,\ ...,\ p;\ {{C}_{*}}\left( :,j \right)$ are identifiable.
+              </p>
+              <p class="fragment">
+                Let $J$ be the index set corresponding to the columns of $R$ that do not contain the support of the first $p$ columns of ${{C}_{*}}$.
+              </p>
+              <p class="fragment">
+                If $rank\left( {{S}_{*}}\left( J,p+1:r \right) \right)=r-p$ and <br>
+                ${{C}_{*}}\left( :,p+1 \right)$identifiable in $R\left( :J \right)\overset{Exact}{\mathop{=}}\,{{C}_{*}}\left( :,p+1:r \right){{S}_{*}}{{\left( J,p+1:r \right)}^{T}}$of size $r-p$ then 
+              </p>
+              <p class="fragment">
+                ${{C}_{*}}\left( :,p+1 \right)$ is identifiable in the Exact NMF of $R$ of size $r$.
+              </p>
+            </ul>
+          </section>
+        </section>
+        <section id="end">
+          <section>
+            <h2>
+              Refrences
+            </h2>
+            <ul class="r-fit-text">
+              <li>
+                <a href="https://epubs.siam.org/doi/10.1137/22M1507553">
+                  N. Gillis and R. Rajkó, "Partial Identifiability for Nonnegative Matrix Factorization", SIAM J. on Matrix Analysis and Applications 44 (1), pp. 27-52, 2023.
+                </a>
+              </li>
+              <li>
+                <a href="https://sites.google.com/site/nicolasgillis/book">
+                  N. Gillis, "Nonnegative Matrix Factorization", SIAM, Philadelphia, 2020. 
+                </a>
+              </li>
+
+            </ul>
+            <img src="/images/Book_NMF_cover.png" alt="" width="30%" height="30%">
+          </section>
+
+          <section id="">
+            <h2 class="r-fit-text">Thank you</h2>
+            <p class="r-fit-text">
+              Please find the presentation on my GitHub:
+              <a href="https://github.com/samyarmodabber/TUC_Seminar_NMF">
+                https://github.com/samyarmodabber/TUC_Seminar_NMF
+              </a>
+            </p>
+            <img data-src="/images/QR_NMFTUCSeminar.png" alt="" width="300rem" height="300rem">
+          </section>
+        </section>
+          
       </div>
     </div>
 
