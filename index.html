@@ -636,8 +636,6 @@
                 2)	$\forall k,j\ \ \ k\ne j\Rightarrow \ {{F}_{{{C}_{*}}}}\left( {{C}_{*}}\left( :,k \right) \right)\bigcap {{F}_{{{C}_{*}}}}\left( {{C}_{*}}\left( :,j \right) \right)=\varnothing $ 
               </p>
             </ul>
-
-            
           </section>
 
           <section id="e4">
@@ -702,6 +700,65 @@
               </p>
             </ul>
           </section>
+
+          <section id="l2">
+            <h5>
+              Lemma 2
+            </h5>
+            <ul class="r-fit-text">
+              <p>
+                Let $R\ \overset{\ Exact}{\mathop{=}}\,{{C}_{*}}S_{*}^{T}$ and $R\ \overset{Exact}{\mathop{=}}\,C{{S}^{T}}$ with size $r=rank\left( R \right)$ and w.l.o.g  $C$ and  ${{C}_{*}}$ are stochastic. If ${{C}_{*}}\left( :,k \right)$ satisfied following condition:
+              </p>
+              <p class="fragment">
+                1)	The selective window assumption, i.e., $\exists \alpha >0\ \ \exists j\ \ \ st\ {{C}_{*}}\left( :,k \right)=\alpha R\left( :,j \right)$
+                <br>
+                2)	Is not identifiable in $C$, i.e.  $\forall j\ \ \ C\left( :,j \right)\ne {{C}_{*}}\left( :,k \right)$
+              </p>
+              <p class="fragment">
+                Then there exists an index set $J$ with $\left| J \right|\ge 2$ such that
+                <br>
+                $$\forall j\in J\ \ \ \ C\left( :,j \right)\in {{F}_{{{C}_{*}}}}\left( {{C}_{*}}\left( :,k \right) \right)$$
+              </p>
+
+            </ul>
+          </section>
+          
+
+            <section>
+              <h5>
+                Theorem 9
+              </h5>
+              <ul class="r-fit-text">
+                <p class="fragment">
+                  Let $R\ ={{C}_{*}}S_{*}^{T}$ with size $r=3=rank\left( R \right)$, ${{C}_{*}}\in \mathbb{R}_{+}^{m\times 3}$ and $S_{*}^{T}\in \mathbb{R}_{+}^{n\times 3}$ and w.l.o.g $R$, ${{C}_{*}}$ and $S_{*}^{T}$ are stochastic.
+                </p>
+                <p class="fragment">
+                  W.l.o.g let ${{C}_{*}}\left( :,1 \right)$ and ${{C}_{*}}\left( :,2 \right)$satisfied selective window and their support do not contain each other.
+                </p>
+                <p class="fragment">
+                  Then these two columns are identifiable if $\exists R\left( :,j \right)$ such that:
+                </p>
+                <p class="fragment">
+                  If ${{F}_{{{C}_{*}}}}\left( {{C}_{*}}\left( :,1 \right) \right)\bigcap {{F}_{{{C}_{*}}}}\left( {{C}_{*}}\left( :,2 \right) \right)=\varnothing $,
+                  <br>                
+                  \[R\left( :,j \right)\notin \ conv\left( \left[ {{C}_{*}}\left( :,1 \right),{{F}_{{{C}_{*}}}}\left( {{C}_{*}}\left( :,2 \right) \right) \right] \right)\bigcup conv\left( \left[ {{C}_{*}}\left( :,2 \right),{{F}_{{{C}_{*}}}}\left( {{C}_{*}}\left( :,1 \right) \right) \right] \right)\]
+                </p>
+                <p class="fragment">
+                  Else
+                  <br>
+                  \[R\left( :,j \right)\notin \ conv\left( \left[ {{F}_{{{C}_{*}}}}\left( {{C}_{*}}\left( :,1 \right) \right),{{F}_{{{C}_{*}}}}\left( {{C}_{*}}\left( :,2 \right) \right) \right] \right)\]
+                </p>
+              </ul>
+
+            </section>
+            <section id="alg">
+              <h5>
+                Algotithm
+              </h5>
+              <img data-src="/images/Algorithm.png" alt="Algorithm" height="600rem" width="600rem">
+            </section>
+
+
         </section>
         <section id="end">
           <section>
