@@ -48,7 +48,7 @@
           </section>
 
           <section id="Content">
-            <h2>Content</h2>
+            <h5>Content</h5>
             <ul>
               <li>Exact NMF</li>
               <li>Full Identifability</li>
@@ -312,6 +312,7 @@
             <img data-src="/images/Example01.png" alt="Example 1">
           </section>
       </section>
+
         <!-- Full identifiability -->
         <section id="p2">
           <section id="pi">
@@ -334,7 +335,7 @@
               <p class="fragment">
                   1)	We can use matrix notation in definition of full identifiability:
               </p>
-              <p class="fragment">
+              <p class="">
                 $\forall \ R\overset{Exact}{\mathop{=}}\,C{{S}^{T}}$, there exists a permutation matrix $\Pi \in {{\left\{ 0,1 \right\}}^{r\times r}}$ and a nonsingular diagonal scaling matrix $D$ such that \[C={{C}_{*}}\Pi D\ \wedge \ {{S}^{T}}={{D}^{-1}}{{\Pi }^{T}}S_{*}^{T}\]
               </p>
               <p class="fragment">
@@ -356,7 +357,6 @@
 
           <section id="sp">
             <h5>Separability</h5>
-            <ul class="r-fit-text">
               <p class="fragment">
                 The matrix $C\in \mathbb{R}_{{}}^{m\times r}$ with $m\text{ }\ge \text{ }r$ is called separable if $cone\left( C \right)=\mathbb{R}_{+}^{r}$
               </p>
@@ -364,6 +364,14 @@
               Or equivalently, <br>
               there exists an index set $K$ of size $r$ such that $C\left( K,: \right)\in \mathbb{R}_{{}}^{r\times r}$ is a nonsingular diagonal matrix.
               </p>
+          </section>
+
+          <section id="t3">
+            <h5>Theorem 3</h5>
+            <p class="fragment">
+              The Exact NMF $R\overset{Exact}{\mathop{=}}\,{{C}_{*}}S_{*}^{T}$ <br> is a Full Identifiability <br> if ${{C}_{*}}$ and $S_{*}^{T}$ are <span class="fragment highlight-red">separable</span>.
+            </p>
+            <ul class="r-fit-text">
             </ul>
           </section>
 
@@ -383,15 +391,28 @@
             <img data-src="/images/SSCvsSeparability.jpg" alt="" width="600" height="400">
           </section>
 
-          <section id="t3">
-            <h5>Theorem 3 & 4</h5>
+          <section id="t4">
+            <h5>Theorem 4</h5>
             <p class="fragment">
-              The Exact NMF $R\overset{Exact}{\mathop{=}}\,{{C}_{*}}S_{*}^{T}$ <br> is a Full Identifiability <br> if ${{C}_{*}}$ and $S_{*}^{T}$ are <span class="fragment highlight-red">separable</span>  or satisfy the <span class="fragment highlight-red">SSC</span>.
+              The Exact NMF $R\overset{Exact}{\mathop{=}}\,{{C}_{*}}S_{*}^{T}$ <br> is a Full Identifiability <br> if ${{C}_{*}}$ and $S_{*}^{T}$ satisfy the <span class="fragment highlight-red">SSC</span>.
             </p>
             <ul class="r-fit-text">
             </ul>
           </section>
-      </section>
+
+          <section id="t5">
+            <h5>
+              Theorem 5
+            </h5>
+            <p>
+              $R\ \overset{\ Exact}{\mathop{=}}\,{{C}_{*}}S_{*}^{T}$ and ${{C}_{*}}\left( :,k \right)$is identifiable, then
+            </p>
+            <p>
+              $\ \forall j\ \ j\ne k\ \ \operatorname{supp}\left( {{C}_{*}}\left( :,j \right) \right)\not\subset \operatorname{supp}\left( {{C}_{*}}\left( :,k \right) \right)\ \ \ \ \ \ \ \ \ \left( resp.\ {{S}_{*}} \right)$
+            </p>
+
+          </section>
+        </section>
         
         <!-- Partial identifiability -->
         <section id="p3">
@@ -413,7 +434,7 @@
           </section>
 
           <section id="t6">
-            <h2>Theorem 6</h2>
+            <h5>Theorem 6</h5>
             <span>Restricted DBU (Data-Based uniqueness)</span>
             <ul class="r-fit-text">
               <p class="fragment">
@@ -661,9 +682,9 @@
           </section>
           
           <section id="t8">
-            <h2>
+            <h5>
               Theorem 8
-            </h2>
+            </h5>
             <ul class="r-fit-text">
 
               <p>
@@ -684,9 +705,9 @@
         </section>
         <section id="end">
           <section>
-            <h2>
+            <h5>
               Refrences
-            </h2>
+            </h5>
             <ul class="r-fit-text">
               <li>
                 <a href="https://epubs.siam.org/doi/10.1137/22M1507553">
@@ -704,7 +725,7 @@
           </section>
 
           <section id="">
-            <h2 class="r-fit-text">Thank you</h2>
+            <h5 class="r-fit-text">Thank you</h5>
             <p class="r-fit-text">
               Please find the presentation on my GitHub:
               <a href="https://github.com/samyarmodabber/TUC_Seminar_NMF">
