@@ -189,6 +189,9 @@
                 8) Nonnegative Orthant: $\mathbb{R}_{+}^{n}:=\left\{ \left. y
                 \right|y\in {{\mathbb{R}}^{n}},\ y\ge 0 \right\}$
               </li>
+              <li class="fragment">
+                9) Probability Simplex: $\Delta ={{\Delta }^{n}}:=\left\{ \left. y \right|y\in {{\mathbb{R}}^{n}},\ {{e}^{T}}y=1,\ y\ge 0 \right\}=conv\left( I \right)$
+              </li>
             </ul>
           </section>
 
@@ -228,8 +231,8 @@
               </p>
               <p class="fragment">1)	full-dimensional inner polytope: $${{P}_{inn}}:=\ conv\left( \left[ {{v}_{1}},{{v}_{2}},\cdots ,{{v}_{n}} \right] \right)\subseteq {{\mathbb{R}}^{d}}$$</p>
               <p class="fragment">2)	full-dimensional outer polytope: $${{P}_{out}}:=\ \left\{ \left. x\in {{\mathbb{R}}^{d}} \right|Fx+g\ge 0 \right\}$$where $F\in \mathbb{R}_{{}}^{m\times r},\ g\in {{\mathbb{R}}^{m}}$</p>
-              <p class="fragment">Output: ${{P}_{bet}}$</p>
-              <p class="fragment">Goal: ${{P}_{inn}}\subseteq {{P}_{bet}}\subseteq {{P}_{out}}$ where has $p$vertices such that $p\ge d+1$</p>
+              <p class="fragment">Output: ${{P}_{bet}}$ with $p$ vertices st $p\ge d+1$</p>
+              <p class="fragment">Goal: ${{P}_{inn}}\subseteq {{P}_{bet}}\subseteq {{P}_{out}}$ </p>
             </ul>
           </section>
 
@@ -244,7 +247,7 @@
           <h5>Example 1</h5>
           <ul class="r-fit-text left">
             <p class="fragment">
-            ${{P}_{inn}}:=\ conv\left( \left[ {{v}_{1}}=\left[ \begin{matrix}
+            ${{P}_{inn}}:=\ conv\left( \left[ {{v}_{1}}=>\left[ \begin{matrix}
               0.5  \\
               0  \\
             \end{matrix} \right],{{v}_{2}}=\left[ \begin{matrix}
@@ -324,7 +327,7 @@
             <h5>Full identifiability</h5>
             <p class="fragment">Exact NMF $R\ \overset{Exact}{\mathop{=}}\,{{C}_{*}}S_{*}^{T}$ of $R\in \mathbb{R}_{+}^{m\times n}$ is called <br> a (full) identifiability of rank $r$ <br> and we write $R\ \overset{Full}{\mathop{=}}\,C{{S}^{T}}$ if:</p>
             <p class="fragment">
-              $$\forall \ R \: \overset{Exact}{\mathop{=}}\: C{{S}^{T}}\ \exists \: \pi :{{\mathbb{N}}_{r}}\to {{\mathbb{N}}_{r}}\ \exists \: 0 \le \alpha \in {{\mathbb{R}}^{r}}$$
+              $$\forall \ R \: \overset{Exact}{\mathop{=}}\: C{{S}^{T}}\ \exists \: \pi :{{\mathbb{N}}_{r}}\to {{\mathbb{N}}_{r}}\ \exists \: 0 < \alpha \in {{\mathbb{R}}^{r}}$$
               $$C\left( :,k \right)={{\alpha }_{k}}{{C}_{*}}\left( :,{{\pi }_{k}} \right)\ ,\ \ S\left( :,k \right)^{T}=\frac{1}{{{\alpha }_{k}}}{{S}_{*}}\left( :,{{\pi }_{k}} \right)^{T}$$
             </p>
           </section>
@@ -332,10 +335,10 @@
           <section id="fir">
             <h5>Remark</h5>
             <ul class="r-fit-text">
-              <p class="fragment">
+              <p class="">
                   1)	We can use matrix notation in definition of full identifiability:
               </p>
-              <p class="">
+              <p class="fragment">
                 $\forall \ R\overset{Exact}{\mathop{=}}\,C{{S}^{T}}$, there exists a permutation matrix $\Pi \in {{\left\{ 0,1 \right\}}^{r\times r}}$ and a nonsingular diagonal scaling matrix $D$ such that \[C={{C}_{*}}\Pi D\ \wedge \ {{S}^{T}}={{D}^{-1}}{{\Pi }^{T}}S_{*}^{T}\]
               </p>
               <p class="fragment">
@@ -357,13 +360,16 @@
 
           <section id="sp">
             <h5>Separability</h5>
+            <p>
+              $C\in \mathbb{R}_{{}}^{m\times r}$ with $m\text{ }\ge \text{ }r$ is called separable if
+            </p>
               <p class="fragment">
-                The matrix $C\in \mathbb{R}_{{}}^{m\times r}$ with $m\text{ }\ge \text{ }r$ is called separable if $cone\left( C \right)=\mathbb{R}_{+}^{r}$
+                There exists an index set $K$ of size $r$ such that $C\left( K,: \right)\in \mathbb{R}_{{}}^{r\times r}$ is a nonsingular diagonal matrix.
               </p>
-              <p class="fragment">
-              Or equivalently, <br>
-              there exists an index set $K$ of size $r$ such that $C\left( K,: \right)\in \mathbb{R}_{{}}^{r\times r}$ is a nonsingular diagonal matrix.
-              </p>
+              <!-- <p class="fragment">
+                Or equivalently, <br>
+                $cone\left( C \right)=\mathbb{R}_{+}^{r}$
+              </p> -->
           </section>
 
           <section id="t3">
@@ -381,9 +387,12 @@
               <p class="fragment">
                 $C\in \mathbb{R}_{{}}^{m\times r}$with $ m\text{ }\ge \text{ }r$ satisfies $SSC$ if:
               </p>
-              <p class="fragment">1)	$L:=\left\{ \left. x\in \mathbb{R}_{+}^{r} \right|{{e}^{T}}x\ge \sqrt{r-1}{{\left\| x \right\|}_{2}} \right\}\subseteq cone\left( {{C}^{T}} \right)$</p>
+              <p class="fragment">
+                1)	$L:=\left\{ \left. x\in \mathbb{R}_{+}^{r} \right|{{e}^{T}}x\ge \sqrt{r-1}{{\left\| x \right\|}_{2}} \right\}\subseteq cone\left( {{C}^{T}} \right)$
+                <br>
+                $L$ is a Lorentz cone, also known as a second-order cone or an ice cream cone.
+              </p>
               <p class="fragment">2)	Does not exist any orthogonal matrix $Q$ ($Q{{Q}^{T}}=I\ $) such that $$cone\left( {{C}^{T}} \right)\subseteq cone\left( Q \right),$$ except for permutation matrices. </p>
-              <p class="fragment">$L$ is a Lorentz cone, also known as a second-order cone or an ice cream cone.</p>
             </ul>
           </section>
 
@@ -398,20 +407,6 @@
             </p>
             <ul class="r-fit-text">
             </ul>
-          </section>
-
-          <section id="t5">
-            <h5>
-              Theorem 5
-            </h5>
-            <p>
-              $R\ \overset{\ Exact}{\mathop{=}}\,{{C}_{*}}S_{*}^{T}$ and ${{C}_{*}}\left( :,k \right)$is identifiable, then
-            </p>
-            <p>
-              $$\ \forall j\ \ j\ne k\ \ \operatorname{supp}\left( {{C}_{*}}\left( :,j \right) \right)\not\subset \operatorname{supp}\left( {{C}_{*}}\left( :,k \right) \right)$$ 
-              <br>$ \left( resp.\ {{S}_{*}} \right)$
-            </p>
-
           </section>
         </section>
         
@@ -434,12 +429,25 @@
             </ul>
           </section>
 
+          <section id="t5">
+            <h5>
+              Theorem 5
+            </h5>
+            <p>
+              $R\ \overset{\ Exact}{\mathop{=}}\,{{C}_{*}}S_{*}^{T}$ and ${{C}_{*}}\left( :,k \right)$is identifiable, then
+            </p>
+            <p class="fragment">
+              $$\ \forall j\ \ j\ne k\ \ \operatorname{supp}\left( {{C}_{*}}\left( :,j \right) \right)\not\subset \operatorname{supp}\left( {{C}_{*}}\left( :,k \right) \right)$$ 
+              $ \left( resp.\ {{S}_{*}} \right)$
+            </p>
+          </section>
+
           <section id="t6">
             <h5>Theorem 6</h5>
             <span>Restricted DBU (Data-Based uniqueness)</span>
             <ul class="r-fit-text">
               <p class="fragment">
-                Let $R\ \overset{Exact}{\mathop{=}}\,{{C}_{*}}S_{*}^{T}$. The ${{C}_{*}}\left( :,k \right)$ is identifiable if: 
+                Let $R\ \overset{Exact}{\mathop{=}}\,{{C}_{*}}S_{*}^{T}$ of size $r$. Then ${{C}_{*}}\left( :,k \right)$ is identifiable if: 
               </p>
               <p class="fragment">
                 1)	FRZRW (Full-rank zero-region window): <br>
@@ -456,7 +464,7 @@
           <section id="e2">
             <h5>Example 2</h5>
             <ul class="r-fit-text">
-              <p class="fragment">
+              <p class="">
                 $R\ \overset{Exact}{\mathop{=}}\,{{C}_{*}}S_{*}^{T}=\left[ \begin{matrix}
                   2 & 2 & 2  \\
                   1 & 3 & 1  \\
@@ -479,33 +487,6 @@
                 $\exists j=1\ \exists \alpha =1>0\ \ \ \ {{S}_{*}}\left( 1,: \right)=e_{\left( 1 \right)}^{T}$
               </p>
             </ul>
-          </section>
-
-          <section id="str">
-            <h5>SSC is stronger than the FRZRW condition.</h5>
-            <ul class="r-fit-text">
-              <p class="fragment">Let us consider the 4-by-6 matrix H containing all 2-sparse columns with non-zero entries equal to 1:</p>
-              <p class="fragment">
-                $$C_{*}^{T}=\left[ \begin{matrix}
-                  1 & 0 & 0 & 1 & 1 & 0  \\
-                  0 & 1 & 0 & 1 & 0 & 1  \\
-                  0 & 0 & 1 & 0 & 1 & 1  \\
-                  1 & 1 & 1 & 0 & 0 & 0  \\
-                \end{matrix} \right]$$
-              </p>
-              <p class="fragment">satisfies the FRZRW condition, <br> but $X:={{C}_{*}}C_{*}^{T}$ does not admit a unique NMF <br> since $X=C{{C}^{T}}$ is another exact NMF with</p>
-              <p class="fragment">
-                \[{{C}^{T}}:=\ \left[ \begin{matrix}
-                  1 & 1 & 1 & 0 & 0 & 0  \\
-                  1 & 0 & 0 & 1 & 1 & 0  \\
-                  0 & 1 & 0 & 1 & 0 & 1  \\
-                  0 & 0 & 1 & 0 & 1 & 1  \\
-                \end{matrix} \right] \]
-              </p>
-            </ul>
-          </section>
-          <section>
-            <img data-src="https://mdbr.s3.eu-central-1.amazonaws.com/TUC/Seminar_NMF/Remark02.png" alt="">
           </section>
 
           <section id="mf">
