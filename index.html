@@ -35,8 +35,9 @@
           <section id="Title">
             <h1 class="r-fit-text">Partial Identifiability <br> for NMF</h1>
             <h4>Samyar Modabber</h4>
+            <h4></h4>
             <p>TU Chemnitz</p>
-            <p>Date: 2023/02/08</p>
+            <p>2023/02/08</p>
             
 
             <svg width="400" height="700" >
@@ -50,9 +51,10 @@
           <section id="Content">
             <h5>Content</h5>
             <ul>
-              <li>Exact NMF</li>
-              <li>Full Identifability</li>
-              <li>Partial Identifability</li>
+              <p>Introduction</p>
+              <p>Exact NMF</p>
+              <p>Full Identifability</p>
+              <p>Partial Identifability</p>
             </ul>
           </section>
         </section>
@@ -89,7 +91,9 @@
           </section>
   
           <section>
+            <h5>Geometrical interpretation of LDR</h5>
             <img data-src="https://mdbr.s3.eu-central-1.amazonaws.com/TUC/Seminar_NMF/LDR.png" alt="LDR">
+            <small>N. Gillis, "Nonnegative Matrix Factorization", SIAM, Philadelphia, 2020.</small>
           </section>
   
           <section id="lr">
@@ -199,7 +203,7 @@
             <h5>Exact NMF</h5>
 
             <p>
-              Decomposition $R=C{{S}^{T}}$ of $R\in \mathbb{R}_{+}^{m\times n}$ is called <br> an Exact NMF of size $r$ and we write $R\ \overset{Exact}{\mathop{=}}\,C{{S}^{T}}$ if:
+              Decomposition $R=C{{S}^{T}}$ of $R\in \mathbb{R}_{+}^{m\times n}$ is called <br> an <b>Exact NMF</b> of size $r$ and we write $R\ \overset{Exact}{\mathop{=}}\,C{{S}^{T}}$ if:
             </p>
             <p>
               $C\in \mathbb{R}_{+}^{m\times r},\ S\in \mathbb{R}_{+}^{n\times r}$
@@ -211,11 +215,11 @@
             <h5>Fact</h5>
             <p class="fragment">
                 For an Exact NMF $R\overset{Exact}{\mathop{=}}\,C{{S}^{T}}$, 
-                w.l.o.g. <br> we can assume $R,\ C\ and \ {{S}^{T}}$ are <strong>stochastic</strong> .
+                w.l.o.g. <br> we can assume $R,\ C\ and \ {{S}^{T}}$ are <b>stochastic</b> .
             </p>
             <ul class="r-fit-text">
               
-              <p class="fragment">Proof: First remove zero columns then define</p>
+              <p class="fragment"><strong>Proof</strong>: First remove zero columns then define</p>
               <p class="fragment">
                 $$\begin{align*}
                 {{R}_{n}}\left( :,j \right) &:=\frac{R\left( :,j \right)}{{{e}^{T}}R\left( :,j \right)}=\frac{\sum\limits_{k=1}^{r}{C\left( :,k \right)S\left( j,k \right)}}{{{e}^{T}}R\left( :,j \right)} \\ 
@@ -232,29 +236,31 @@
           </section>
 
           <section id="npp">
-            <h5>NPP (Nested polytope problem)</h5>
+            <h5>NPP (Nested Polytope Problem)</h5>
 
             <small>A NPP with parameter $d$ and $p$</small>
 
             <p class="fragment">
             Input: ${{P}_{inn}},\ {{P}_{out}}$ such that:
             </p>
-            <p class="fragment r-fit-text">1)	full-dimensional inner polytope: ${{P}_{inn}}:=\ conv\left( \left[ {{v}_{1}},{{v}_{2}},\cdots ,{{v}_{n}} \right] \right)\subseteq {{\mathbb{R}}^{d}}$</p>
-            <p class="fragment r-fit-text">2)	full-dimensional outer polytope: ${{P}_{out}}:=\ \left\{ \left. x\in {{\mathbb{R}}^{d}} \right|Fx+g\ge 0 \right\}$ <br> where $F\in \mathbb{R}_{{}}^{m\times r},\ g\in {{\mathbb{R}}^{m}}$</p>
-            <p class="fragment">Output: ${{P}_{bet}}$ with $p$ vertices such that $p\ge d+1$</p>
+            <p class="fragment r-fit-text">1)	full-dimensional <b>inner polytope</b>: ${{P}_{inn}}:=\ conv\left( \left[ {{v}_{1}},{{v}_{2}},\cdots ,{{v}_{n}} \right] \right)\subseteq {{\mathbb{R}}^{d}}$</p>
+            <p class="fragment r-fit-text">2)	full-dimensional <b>outer polytope</b>: ${{P}_{out}}:=\ \left\{ \left. x\in {{\mathbb{R}}^{d}} \right|Fx+g\ge 0 \right\}$ <br> where $F\in \mathbb{R}_{{}}^{m\times r},\ g\in {{\mathbb{R}}^{m}}$</p>
+            <p class="fragment">Output: ${{P}_{bet}}$ with <b>$p$ vertices</b> such that $p\ge d+1$</p>
             <p class="fragment">Goal: ${{P}_{inn}}\subseteq {{P}_{bet}}\subseteq {{P}_{out}}$ </p>
           </section>
 
           <section id="t1">
             <h5>Theorem 1</h5>
-            <p class="fragment r-fit-text">
+            <p class="r-fit-text">
               An Exact NMF problem with $r\text{ }=\text{ }rank\left( R \right)$ <br> 
             </p>
             <p>
+            $$\Leftrightarrow $$
               $$\Leftrightarrow $$ 
+            $$\Leftrightarrow $$
             </p>
-            <p class="fragment r-fit-text">  
-              An NPP with $d\text{ }=\text{ }rank\left( R \right)\text{ }-\text{ }1$ <br> and $p\text{ }=\text{ }d\text{ }+\text{ }1$.
+            <p class="r-fit-text">
+            An NPP with $d\text{ }=\text{ }rank\left( R \right)\text{ }-\text{ }1$ <br> and $p\text{ }=\text{ }d\text{ }+\text{ }1$.
             </p>
           </section>
 
@@ -327,7 +333,9 @@
           </aside>
           </section>     
           <section>
+            <h5>Illustration of the NPP (Example 1)</h5>
             <img data-src="https://mdbr.s3.eu-central-1.amazonaws.com/TUC/Seminar_NMF/Example01.png" alt="Example 1">
+            <small>N. Gillis and R. Rajkó, "Partial Identifiability for Nonnegative Matrix Factorization", SIAM J. on Matrix Analysis and Applications 44 (1), pp. 27-52, 2023.</small>
           </section>
       </section>
 
@@ -340,7 +348,7 @@
 
           <section id="fi">
             <h5>Full identifiability</h5>
-            <p class="fragment">Exact NMF $R\ \overset{Exact}{\mathop{=}}\,{{C}_{*}}S_{*}^{T}$ of $R\in \mathbb{R}_{+}^{m\times n}$ is called <br> a (full) identifiability of rank $r$ <br> and we write $R\ \overset{Full}{\mathop{=}}\,C{{S}^{T}}$ if:</p>
+            <p class="">Exact NMF $R\ \overset{Exact}{\mathop{=}}\,{{C}_{*}}S_{*}^{T}$ of $R\in \mathbb{R}_{+}^{m\times n}$ is called <br> a <b>(full) identifiability</b> of rank $r$ <br> and we write $R\ \overset{Full}{\mathop{=}}\,C{{S}^{T}}$ if:</p>
             <p class="fragment">
               $$\forall \ R \: \overset{Exact}{\mathop{=}}\: C{{S}^{T}}\ \exists \: \pi :{{\mathbb{N}}_{r}}\to {{\mathbb{N}}_{r}}\ \exists \: 0 < \alpha \in {{\mathbb{R}}^{r}}$$
               $$C\left( :,k \right)={{\alpha }_{k}}{{C}_{*}}\left( :,{{\pi }_{k}} \right)\ ,\ \ S\left( :,k \right)^{T}=\frac{1}{{{\alpha }_{k}}}{{S}_{*}}\left( :,{{\pi }_{k}} \right)^{T}$$
@@ -373,7 +381,7 @@
           <section id="sp">
             <h5>Separability</h5>
             <p>
-              $C\in \mathbb{R}_{{}}^{m\times r}$ with $m\text{ }\ge \text{ }r$ is called separable if
+              $C\in \mathbb{R}_{{}}^{m\times r}$ with $m\text{ }\ge \text{ }r$ is called <b>separable</b> if
             </p>
               <p class="fragment">
                 There exists an index set $K$ of size $r$ such that $C\left( K,: \right)\in \mathbb{R}_{{}}^{r\times r}$ is a nonsingular diagonal matrix.
@@ -395,7 +403,7 @@
             <h5>SSC (sufficiently scattered condition)</h5>
             <ul class="r-fit-text">
               <p class="fragment">
-                $C\in \mathbb{R}_{{}}^{m\times r}$with $ m\text{ }\ge \text{ }r$ satisfies $SSC$ if:
+                $C\in \mathbb{R}_{{}}^{m\times r}$ with $m \ge r$ satisfies <b>$SSC$</b> if:
               </p>
               <p class="fragment">
                 1)	$L:=\left\{ \left. x\in \mathbb{R}_{+}^{r} \right|{{e}^{T}}x\ge \sqrt{r-1}{{\left\| x \right\|}_{2}} \right\}\subseteq cone\left( {{C}^{T}} \right)$
@@ -415,7 +423,9 @@
           </section>
           
           <section>
+            <h5>Separability vs. SSC</h5>
             <img data-src="https://mdbr.s3.eu-central-1.amazonaws.com/TUC/Seminar_NMF/SSCvsSeparability.jpg" alt="" width="600" height="400">
+            <small>N. Gillis, "Nonnegative Matrix Factorization", SIAM, Philadelphia, 2020.</small>
           </section>
 
         </section>
@@ -430,8 +440,8 @@
           <section id="pi">
             <h5>Partial identifiability</h5>
             <ul class="r-fit-text">
-              <p class="fragment">
-                Let $R\ \overset{Exact}{\mathop{=}}\,{{C}_{*}}S_{*}^{T}$. The ${{C}_{*}}\left( :,k \right)$ is called identifiable if
+              <p class="">
+                Let $R\ \overset{Exact}{\mathop{=}}\,{{C}_{*}}S_{*}^{T}$. <b>${{C}_{*}}\left( :,k \right)$</b> is called identifiable if
               </p>
               <p class="fragment">
                 $\forall \ R\overset{Exact}{\mathop{=}}\,C{{S}^{T}}\ \exists j\ \ \exists \alpha >0\ \ \ \ {{C}_{*}}\left( :,k \right)=\alpha C\left( :,j \right)$
@@ -455,17 +465,18 @@
           <section id="t6">
             <h5>Theorem 6</h5>
             <span>Restricted DBU (Data-Based uniqueness)</span>
+
+            <p class="fragment">
+              Let $R\ \overset{Exact}{\mathop{=}}\,{{C}_{*}}S_{*}^{T}$ of size $r$. <br> Then ${{C}_{*}}\left( :,k \right)$ is identifiable if: 
+            </p>
             <ul class="r-fit-text">
               <p class="fragment">
-                Let $R\ \overset{Exact}{\mathop{=}}\,{{C}_{*}}S_{*}^{T}$ of size $r$. Then ${{C}_{*}}\left( :,k \right)$ is identifiable if: 
-              </p>
-              <p class="fragment">
-                1)	FRZRW (Full-rank zero-region window): <br>
+                1) <b>	FRZRW (Full-rank zero-region window)</b>: <br>
                 $$rank\left( {{C}_{*}}\left( I,: \right) \right)=r-1$$
                 where $I=\left\{ \left. i \right|{{C}_{*}}\left( i,k \right)=0 \right\}=\text{supp}{{\left( C\left( :,k \right) \right)}^{c}}$
               </p>
               <p class="fragment">
-                2)	SW (Selective window): <br>
+                2) <b>SW (Selective window)</b>: <br>
                 $$\exists j\ \exists \alpha >0\ \ \ \ {{S}_{*}}\left( j,: \right)=\alpha e_{\left( k \right)}^{T}$$
               </p>
             </ul>
@@ -488,12 +499,14 @@
                 \end{matrix} \right]$
               </p>
               <p class="fragment">
+                <b>FRZRW:</b> <br>
                 $I=\left\{ 4,5 \right\}\ \Rightarrow C\left( I,: \right)=\left[ \begin{matrix}
                 0 & 2 & 2  \\
                 0 & 1 & 2  \\
-              \end{matrix} \right]\ \Rightarrow rank\left( C\left( I,: \right) \right)=2=3-1=r-1$
+              \end{matrix} \right]\ \\ \Rightarrow rank\left( C\left( I,: \right) \right)=2=3-1=r-1$
               </p>
               <p class="fragment">
+                <b>SW:</b> <br>
                 $\exists j=1\ \exists \alpha =1>0\ \ \ \ {{S}_{*}}\left( 1,: \right)=e_{\left( 1 \right)}^{T}$
               </p>
             </ul>
@@ -534,18 +547,16 @@
 
           <section id="t7">
             <h5>Theorem 7</h5>
-              <p class="fragment">
+              <p>
                 Let $R\ \overset{Exact}{\mathop{=}}\,{{C}_{*}}S_{*}^{T}$ with $r=rank\left( R \right)$,
                 <br>${{C}_{*}}\in \mathbb{R}_{+}^{m\times r}$ and $S_{*}^{T}\in \mathbb{R}_{+}^{n\times r}$ are stochastic. 
-              </p>
+              </p class="fragment">
                 Then ${{C}_{*}}\left( :,k \right)$is identifiable if
               <p class="fragment">
                 1)	it satisfies the selective window condition
               </p>
               <p class="fragment">
                 2)	there exists index set $J$such that 
-              </p>
-              <p class="fragment">
                 $$rank\left( R\left( :,J \right) \right)=r-1\ \\ \\ \ \forall j\in J\ {{F}_{{{C}_{*}}}}\left( {{C}_{*}}\left( :,k \right) \right)\bigcap {{F}_{{{C}_{*}}}}\left( R\left( :,j \right) \right)=\varnothing $$
               </p>
           </section>
@@ -607,7 +618,9 @@
             </aside>
           </section>
           <section>
-            <img data-src="https://mdbr.s3.eu-central-1.amazonaws.com/TUC/Seminar_NMF/Example03.png" alt="">
+            <h5>Illustration of the NPP (Example 3)</h5>
+            <img data-src="https://mdbr.s3.eu-central-1.amazonaws.com/TUC/Seminar_NMF/Example03.png" alt="Example 3">
+            <small>N. Gillis and R. Rajkó, "Partial Identifiability for Nonnegative Matrix Factorization", SIAM J. on Matrix Analysis and Applications 44 (1), pp. 27-52, 2023.</small>
           </section>
 
           <section id="c1">
@@ -654,7 +667,7 @@
                 ${{P}_{out}}:=\ {{\left[ 0,1 \right]}^{3}}$
               </p>
               <p class="fragment">
-                satisfies the conditions of Theorem 7 for all k
+                satisfies the conditions of Theorem 7 for all $k$
               </p>
               <p class="fragment">
                 since the vertices of ${{P}_{inn}}$ are on (minimal) faces (namely, edges) that do not intersect.
@@ -668,29 +681,33 @@
             </aside>
           </section>
           <section>
-            <img data-src="https://mdbr.s3.eu-central-1.amazonaws.com/TUC/Seminar_NMF/Example04.png" alt="">
+            <h5>Illustration of the NPP (Example 4)</h5>
+            <img data-src="https://mdbr.s3.eu-central-1.amazonaws.com/TUC/Seminar_NMF/Example04.png" width="600rem" alt="Example 3">
+            <small>N. Gillis and R. Rajkó, "Partial Identifiability for Nonnegative Matrix Factorization", SIAM J. on Matrix Analysis and Applications 44 (1), pp. 27-52, 2023.</small>
           </section>
           
           <section id="t8">
             <h5>
               Theorem 8
             </h5>
-            <ul class="r-fit-text">
-
-              <p>
+              <p class="fragment r-fit-text">
                 Let $R\ \overset{Exact}{\mathop{=}} {{C}_{*}}S_{*}^{T}$ with $r=rank\left( R \right)$, ${{C}_{*}}\in \mathbb{R}_{+}^{m\times r}$ and $S_{*}^{T}\in \mathbb{R}_{+}^{n\times r}$ <br> and w.l.o.g $\forall j=1,\ 2,\ ...,\ p;\ {{C}_{*}}\left( :,j \right)$ are identifiable.
               </p>
-              <p class="fragment">
-                Let $J$ be the index set corresponding to the columns of $R$ that do not contain the support of the first $p$ columns of ${{C}_{*}}$.
+              <p class="fragment r-fit-text">
+                Let $J$ be the index set of columns of $R$ <br> that do not contain the support of the first $p$ columns of ${{C}_{*}}$. and 
               </p>
-              <p class="fragment">
-                If $rank\left( {{S}_{*}}\left( J,p+1:r \right) \right)=r-p$ and <br>
-                ${{C}_{*}}\left( :,p+1 \right)$identifiable in $R\left( :J \right)\overset{Exact}{\mathop{=}}\,{{C}_{*}}\left( :,p+1:r \right){{S}_{*}}{{\left( J,p+1:r \right)}^{T}}$of size $r-p$ then 
+              <ol class="fragment r-fit-text">
+                <li>
+                  $rank\left( {{S}_{*}}\left( J,p+1:r \right) \right)=r-p$
+                </li>
+                <li>
+                  ${{C}_{*}}\left( :,p+1 \right)$ <b>identifiable in</b> <br> $R\left( :J \right)\overset{Exact}{\mathop{=}}\,{{C}_{*}}\left( :,p+1:r \right){{S}_{*}}{{\left( J,p+1:r \right)}^{T}}$of size $r-p$ 
+                </li>
+              </ol>
+              <p class="fragment r-fit-text">
+                then
+                <b>${{C}_{*}}\left( :,p+1 \right)$</b> is identifiable in the Exact NMF of $R$ of size $r$.
               </p>
-              <p class="fragment">
-                ${{C}_{*}}\left( :,p+1 \right)$ is identifiable in the Exact NMF of $R$ of size $r$.
-              </p>
-            </ul>
           </section>
 
           <section id="l2">
@@ -731,7 +748,7 @@
                   Then these two columns are identifiable if $\exists R\left( :,j \right)$ such that:
                 </p>
                 <p class="fragment">
-                  If ${{F}_{{{C}_{*}}}}\left( {{C}_{*}}\left( :,1 \right) \right)\bigcap {{F}_{{{C}_{*}}}}\left( {{C}_{*}}\left( :,2 \right) \right)=\varnothing $,
+                  IF ${{F}_{{{C}_{*}}}}\left( {{C}_{*}}\left( :,1 \right) \right)\bigcap {{F}_{{{C}_{*}}}}\left( {{C}_{*}}\left( :,2 \right) \right)=\varnothing $,
                   <br>                
                   \[R\left( :,j \right)\notin \ conv\left( \left[ {{C}_{*}}\left( :,1 \right),{{F}_{{{C}_{*}}}}\left( {{C}_{*}}\left( :,2 \right) \right) \right] \right)\bigcup conv\left( \left[ {{C}_{*}}\left( :,2 \right),{{F}_{{{C}_{*}}}}\left( {{C}_{*}}\left( :,1 \right) \right) \right] \right)\]
                 </p>
