@@ -514,10 +514,10 @@
 
           <section id="mf">
             <h5>Minimal face</h5>
-            <p class="fragment">
+            <p>
                 Let $C\in \mathbb{R}_{+}^{m\times r}$ be a stochastic matrix and <br> $y\in \Gamma =col\left( C \right)\bigcap \Delta $. <br> We define <b>minimal face</b> of $C$ containing $y$ by
             </p> 
-            <p class="fragment">
+            <p class="fragment r-fit-text">
                 $$
                 \begin{equation*}
                 \begin{aligned}
@@ -528,7 +528,24 @@
                 \end{equation*}
                 $$
             </p>
+            <p class="fragment r-fit-text">
+              All the points in ${{F}_{C}}\left( y \right)$ have to belong to the same facets of $C$ as $y$.
+            </p>
 
+          </section>
+          <section>
+            <h5>Note</h5>
+            <ol class="r-fit-text">
+              <li>
+                A <b>face</b> of a polytope is obtained by intersecting a subset of its facets. 
+                <br>
+                Hence ${{F}_{C}}\left( y \right)$ is the face of $C$ of minimal dimension containing $y$.
+              </li>
+              <li>
+                A vertex of a poltyope is a 0-dimensional face, and hence <br>
+                $y$ is a vertex of $C$ $\Leftrightarrow {{F}_{C}}\left( y \right)=\left\{ y \right\}$.
+              </li>
+            </ol>
           </section>
 
           <section id="l1">
